@@ -1,5 +1,7 @@
 <?php
-function solution(array $a)
+//https://app.codility.com/programmers/lessons/3-time_complexity/tape_equilibrium/
+//i did 
+function solution1(array $a)
 {
     $n = count($a);
     $left = $right = [];
@@ -26,10 +28,29 @@ function solution(array $a)
 
     return $min;
 }
+//i found and it's easy 
+function solution2(array $a)
+{
+    $n = count($a);
+    $head = $a[0];
+    $tail = array_sum($a) - $head;
+
+    $min = null;
+    for ($p = 1; $p < $n; $p++) {
+        $diff = abs($tail - $head);
+        if (is_null($min)) {
+            $min = $diff;
+        }
+        $min = min($min, $diff);
+        $tail -= $a[$p];
+        $head += $a[$p];
+    }
+    return $min;
+}
 
 //1
-echo solution([3, 1, 2, 4, 3]);
+echo solution2([3, 1, 2, 4, 3]);
 //1
-echo solution([3, 1, 1]);
+echo solution2([3, 1, 1]);
 //0
-echo solution([1, 2, 3, 4, 2]);
+echo solution2([1, 2, 3, 4, 2]);
