@@ -12,7 +12,7 @@
 //iterate and check difference between each pair
 //add difference to sumA and distract from sumB
 //if sums are equals  we found the pair
-function solution1($a, $b, $m)
+function solution1(array $a, array $b, int $m)
 {
     $sumA = array_sum($a);
     $sumB = array_sum($b);
@@ -34,7 +34,7 @@ function solution1($a, $b, $m)
 //get counts array of array a
 //difference between needed pair must equal difference between sums divided on 2
 //(sum(a) - sum(b))/2 == $a[x] - $b[$y]
-function solution2($a, $b, $m)
+function solution2(array $a, array $b, int $m)
 {
     $sumA = array_sum($a);
     $sumB = array_sum($b);
