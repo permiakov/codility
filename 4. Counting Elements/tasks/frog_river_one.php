@@ -1,4 +1,5 @@
 <?php
+//O(n2)
 function solution1($a, $x)
 {
     $n = count($a);
@@ -32,7 +33,7 @@ function solution1($a, $x)
 //// 4
 //echo solution1([1, 3, 1, 3, 2, 1, 3], 3);
 
-
+//O(n)
 function solution2($a, $x)
 {
     $n = count($a);
