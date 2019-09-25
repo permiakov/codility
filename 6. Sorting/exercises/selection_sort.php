@@ -18,6 +18,9 @@ function solution(array $a)
             $a[$minIndex] = $t;
         }
     }
+    return $a;
 }
 
-solution([2, 3, 1, 5]);
+assert_options(ASSERT_EXCEPTION, 1);
+assert(solution([2, 3, 1, 5]) === [1, 2, 3, 5]);
+echo 'Success';
