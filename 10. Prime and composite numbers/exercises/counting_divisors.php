@@ -12,9 +12,9 @@ function solution(int $n)
         if ($n % $i == 0) {
             $result += 2;
         }
-        if ($i * $i == $n) {
-            $result += 1;
-        }
+    }
+    if ($i * $i == $n) {
+        $result += 1;
     }
     return $result;
 }
