@@ -30,6 +30,7 @@ function solution(array $a)
             if ($peakExists) {
                 $min = $n / $q;
             }
+            if(!$peakExists) break;
         }
     }
     return $min ? $min : 0;
