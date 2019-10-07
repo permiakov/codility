@@ -13,6 +13,9 @@ function solution(array $a)
         }
 
     }
+    if (empty($peaks)) {
+        return 0;
+    }
     ksort($peaks);
     $arr = [];
     get_divisors($n, $arr);
@@ -20,9 +23,10 @@ function solution(array $a)
     foreach ($arr as $q) {
         $peakExists = true;
         if ($q > 1) {
+            $peaksCache = $peaks;
             for ($i = 0; $i < $n; $i += $q) {
                 $j = $i + $q;
-                if (!check_peak($i, $j, $peaks)) {
+                if (!check_peak($i, $j, $peaksCache)) {
                     $peakExists = false;
                     break;
                 }
@@ -30,17 +34,22 @@ function solution(array $a)
             if ($peakExists) {
                 $min = $n / $q;
             }
-            if(!$peakExists) break;
+            if (!$peakExists) {
+                break;
+            }
         }
     }
     return $min ? $min : 0;
 }
 
-function check_peak($left, $right, $peaks)
+function check_peak($left, $right, &$peaksCache)
 {
-    foreach ($peaks as $peak) {
+    foreach ($peaksCache as $key => $peak) {
         if ($peak >= $left && $peak <= $right) {
+            unset($peaksCache[$key]);
             return true;
+        } else {
+            unset($peaksCache[$key]);
         }
     }
     return false;
